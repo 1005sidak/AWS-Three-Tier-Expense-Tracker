@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Expense Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Cloud Expense Tracker</h1>
+    <p>Three-tier web application on AWS · UCS531 Cloud Computing</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add an expense</h2>
+      <form id="expense-form">
+        <input id="description" type="text" placeholder="Description (e.g. Mess bill)" maxlength="255" required />
+        <input id="amount" type="number" placeholder="Amount (₹)" min="0.01" step="0.01" required />
+        <select id="category">
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Books</option>
+          <option>Rent</option>
+          <option>Entertainment</option>
+          <option selected>Other</option>
+        </select>
+        <button type="submit">Add</button>
+      </form>
+      <p id="message" class="message"></p>
+    </section>
+
+    <section class="card">
+      <div class="row">
+        <h2>Transactions</h2>
+        <div>
+          <span class="total">Total: ₹<span id="total">0.00</span></span>
+          <button id="clear-all" class="secondary">Delete all</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Date</th><th>Description</th><th>Category</th><th class="num">Amount (₹)</th><th></th></tr>
+        </thead>
+        <tbody id="rows"><tr><td colspan="5" class="empty">Loading…</td></tr></tbody>
+      </table>
+    </section>
+
+    <section class="card servers">
+      <h2>Served by</h2>
+      <p>Web server (web tier): <code id="web-server">…</code></p>
+      <p>App server (app tier): <code id="app-server">…</code></p>
+      <p>Database (RDS): <code id="db-status">…</code></p>
+      <button id="refresh" class="secondary">Refresh</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
